@@ -27,9 +27,9 @@ namespace PROIECT_ATESTARE
         //la apasarea butonului "Incepe testul" se deschide o fereastra noua
         private void button1_Click(object sender, EventArgs e)
         {
-            WMPLib.WindowsMediaPlayer sunet = new WMPLib.WindowsMediaPlayer();
-            sunet.URL = "music.mp3";
-            sunet.controls.play();
+           // WMPLib.WindowsMediaPlayer sunet = new WMPLib.WindowsMediaPlayer();
+           // sunet.URL = "music.mp3";
+            //sunet.controls.play();
             f2.ShowDialog(); 
         }
         

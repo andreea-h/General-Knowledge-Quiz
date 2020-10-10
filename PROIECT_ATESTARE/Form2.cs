@@ -13,6 +13,7 @@ namespace PROIECT_ATESTARE
 {
     public partial class Form2 : Form
     {
+        static Boolean checkAnswer = false;
         public Form2()
         {
             InitializeComponent();
@@ -90,6 +91,18 @@ namespace PROIECT_ATESTARE
         {
             if (indicele < Form1.N)
             {
+                if (checkAnswer == false)
+                {
+                    WMPLib.WindowsMediaPlayer raspunsCorect = new WMPLib.WindowsMediaPlayer();
+                    raspunsCorect.URL = "Correct-answer.mp3";
+                    raspunsCorect.controls.play();
+                }
+                else if (checkAnswer == true)
+                {
+                    WMPLib.WindowsMediaPlayer raspunsGresit = new WMPLib.WindowsMediaPlayer();
+                    raspunsGresit.URL = "Wrong-answer-sound-effect.mp3";
+                    raspunsGresit.controls.play();
+                }
                 Afisari();
                 radioButton1.Checked = false;
                 radioButton2.Checked = false;
@@ -108,7 +121,7 @@ namespace PROIECT_ATESTARE
                 radioButton3.Visible = false;
                 radioButton4.Visible = false;
                 button1.Visible = false;
-                
+
                 string message = " Testul s-a incheiat!  Ai obtinut  " + punctaj + " puncte ";
                 string title = "Final_test";
                 MessageBox.Show(message, title);
@@ -122,25 +135,58 @@ namespace PROIECT_ATESTARE
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (v[indicele].rc == 1)
+            {
                 punctaj++;
+                checkAnswer = true;
+                Console.WriteLine("Raspuns corect 1\n");
+            }
+            else
+            {
+                checkAnswer = false;
+            }
+               
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (v[indicele].rc == 2)
+            {
                 punctaj++;
+                checkAnswer = true;
+                Console.WriteLine("Raspuns corect 2\n");
+            }
+            else
+            {
+                checkAnswer = false;
+            }
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             if (v[indicele].rc == 3)
+            {
                 punctaj++;
+                checkAnswer = true;
+                Console.WriteLine("Raspuns corect 3\n");
+            }
+            else
+            {
+                checkAnswer = false;
+            }
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-             if(v[indicele].rc==4)
-             punctaj++;
+             if(v[indicele].rc == 4)
+             {
+                punctaj++;
+                checkAnswer = true;
+                Console.WriteLine("Raspuns corect 4\n");
+             }
+             else
+             {
+                checkAnswer = false;
+             }
         }
 
         private void button2_Click(object sender, EventArgs e)///generare test nou
@@ -158,6 +204,7 @@ namespace PROIECT_ATESTARE
             radioButton4.Visible = true;
             button1.Visible = true;
             button1.Text = "Urmatoarea intrebare";
+            
             Afisari();
         }
 
