@@ -27,18 +27,37 @@ namespace PROIECT_ATESTARE
         //la apasarea butonului "Incepe testul" se deschide o fereastra noua
         private void button1_Click(object sender, EventArgs e)
         {
-           // WMPLib.WindowsMediaPlayer sunet = new WMPLib.WindowsMediaPlayer();
-           // sunet.URL = "music.mp3";
-            //sunet.controls.play();
-            f2.ShowDialog(); 
+            WMPLib.WindowsMediaPlayer sunet = new WMPLib.WindowsMediaPlayer();
+            sunet.URL = "music.mp3";
+            sunet.controls.play();
+
+            string sir;
+            sir = (textBox1.Text).ToString();
+            //se actualizeaza N ca numaru de intrebari din test, preluat din textBox
+
+            Boolean checkNumber = false;
+
+           
+            if (Int32.TryParse(textBox1.Text, out N))
+            {
+                 N = int.Parse(sir);
+                 checkNumber = true;
+                 f2.ShowDialog();
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Ai introdus un numar invalid!\n" +
+                        "Incearca sa introduci numar de intrebari din intervalul 1-45 :)");
+            }
+            
+           
+            
         }
         
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string sir;
-            sir = (textBox1.Text).ToString();
-            //se actualizeaza N ca numaru de intrebari din test, preluat din textBox
-            N = int.Parse(sir);
+
         }
 
         
